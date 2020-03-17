@@ -35,7 +35,11 @@ function endGame() {
   let totalPlayedMillis = getTimestamp() - firstHitTime;
   let totalPlayedSeconds = Number(totalPlayedMillis / 1000).toFixed(2);
 
-  $("#total-points").text(points);
+  if(points == maxHits) {
+    $("#total-points").text(points);
+  } else {
+    $("#total-points").text(points + " (" + (maxHits - points) + " мимо)");
+  }
   $("#total-time-played").text(totalPlayedSeconds);
   $("#win-message").removeClass("d-none");
 }
